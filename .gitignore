@@ -1,2 +1,4 @@
 data/testing/*.txt
 data/training/*.txt
+data/testing/*.csv
+data/training/*.csv
