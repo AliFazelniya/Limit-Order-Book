@@ -1,1 +1,4 @@
 https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649
+https://onlinelibrary.wiley.com/doi/epdf/10.1002/for.2543
+https://onlinelibrary.wiley.com/doi/full/10.1002/for.2543
+https://data.lobsterdata.com/info/DataStructure.php
