@@ -3,3 +3,4 @@ data/training/*.txt
 data/testing/*.csv
 data/training/*.csv
 .venv
+.~*
