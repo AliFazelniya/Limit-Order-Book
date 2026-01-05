@@ -19,13 +19,7 @@ train/test folds and a single training notebook.
    bash scripts/unxz_data.sh
    ```
 
-2. (Optional) Convert the `.txt` files to `.csv`:
-
-   ```bash
-   python scripts/txt_to_csv.py
-   ```
-
-3. Open the notebook:
+2. Open the notebook:
 
    ```bash
    jupyter lab notebooks/train.ipynb
