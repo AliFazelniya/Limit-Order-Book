@@ -1,14 +1,15 @@
-# Limit Order Book Classification Experiments
+# Limit Order Book (LOB) Sequence Classification
 
-Experiments and data prep for limit order book (LOB) classification using the provided
-train/test folds and a single training notebook.
+Experiments and data preparation for LOB sequence classification using pre-split
+walk-forward folds and a reference training notebook. Data are stored as
+LZMA-compressed whitespace matrices (`.txt.xz`) and loaded into NumPy for
+sliding-window construction.
 
 ## Layout
 
 - `data/` - compressed training/testing folds (see `data/README.md`).
 - `notebooks/` - training and evaluation notebook (see `notebooks/README.md`).
-- `scripts/` - helpers for decompression and txt-to-csv conversion
-  (see `scripts/README.md`).
+- `scripts/` - dataset utilities (see `scripts/README.md`).
 - `url.txt` - dataset and reference links.
 
 ## Quickstart
@@ -25,12 +26,14 @@ train/test folds and a single training notebook.
    jupyter lab notebooks/train.ipynb
    ```
 
-## Data format (as used by the notebook)
+## Data model (as used by the notebook)
 
-- Raw files are whitespace-separated `.txt` blocks.
-- Features are taken from the first `num_features` rows.
-- Labels come from the horizon row and are shifted from (1, 2, 3) to (0, 1, 2).
-- Horizon mapping: 1 -> 100 ticks, 2 -> 50, 3 -> 30, 4 -> 20, 5 -> 10.
+- Each fold is a 2D array `data` with shape `(R, T)` loaded via `np.loadtxt`.
+- Columns are timesteps; rows are variables.
+- Features: `X = data[:num_features, :].T` (default `num_features=144`).
+- Labels: `y = data[-horizon, :][seq_size - 1:] - 1`.
+- Sliding window sample `i` spans timesteps `[i, i+seq_size-1]` and uses `y[i]`.
+- Horizon mapping: `1 -> 100`, `2 -> 50`, `3 -> 30`, `4 -> 20`, `5 -> 10` ticks.
 
 See `data/README.md` for details on file names and folders.
 

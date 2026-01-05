@@ -3,7 +3,7 @@
 ## train.ipynb
 
 End-to-end training and evaluation for LOB classification using walk-forward
-(expanding window) cross-validation. The notebook:
+(expanding-window) cross-validation over pre-split folds. The notebook:
 
 - Loads the `.txt` folds from `data/training/` and `data/testing/`.
 - Builds sliding window datasets for sequence modeling.
@@ -26,6 +26,14 @@ End-to-end training and evaluation for LOB classification using walk-forward
 - Features are the first `num_features` rows.
 - Labels are taken from the horizon row and shifted from `(1, 2, 3)` to `(0, 1, 2)`.
 - Sliding window labels align to the last timestep in each window.
+
+### Tensor conventions
+
+- Raw block `data` is loaded via `np.loadtxt` with shape `(R, T)`.
+- Each sample is a sliding window shaped `(num_features, seq_size)`.
+- Conv1d-style models consume batches shaped `(batch, num_features, seq_size)`;
+  sequence models reshape as needed.
+- Labels are integer class indices in `[0, 2]`.
 
 ### Device selection
 
