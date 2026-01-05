@@ -1,4 +1,4 @@
-# limit-order-book-2
+# Limit Order Book Classification Experiments
 
 Experiments and data prep for limit order book (LOB) classification using the provided
 train/test folds and a single training notebook.
