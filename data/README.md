@@ -58,13 +58,4 @@ Notes:
 
 - Requires `unxz` (from `xz-utils`).
 - Keeps the `.xz` files and writes `.txt` files alongside them.
-
-## Optional conversion
-
-Convert `.txt` files to `.csv` (whitespace to comma) with:
-
-```bash
-python scripts/txt_to_csv.py
-```
-
 The conversion is streamed line-by-line and writes each `.csv` next to its `.txt`.
